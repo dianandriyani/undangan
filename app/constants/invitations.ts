@@ -1,0 +1,117 @@
+import type { Invitation } from '../../shared/types/invitation'
+
+export const INVITATIONS = [
+  {
+    id: 'inv_002',
+    slug: 'nur-and-rama',
+    status: 'published',
+    theme: 'sage-botanical',
+    title: 'Satu Pertemuan, Sejuta Makna',
+    couple: {
+      partnerOne: 'Nur',
+      partnerTwo: 'Rama',
+      shortIntro: 'Dari sebuah perkenalan sederhana, tumbuh cerita yang membawa kami pada satu tujuan.',
+    },
+    weddingDate: '2027-05-15T00:00:00+07:00',
+    settings: {
+      showCountdown: true,
+      showMusicToggle: false,
+      allowRsvp: false,
+    },
+    blocks: [
+      {
+        id: 'cover-01',
+        type: 'cover',
+        variant: 'typography',
+        eyebrow: 'SEBUAH KISAH TENTANG KAMI',
+        headline: 'Berawal dari\nsebuah perkenalan.',
+        supportingText: 'Dengan penuh rasa syukur, kami ingin berbagi kebahagiaan atas langkah baru dalam perjalanan kami.',
+      },
+      {
+        id: 'story-01',
+        type: 'story',
+        variant: 'editorial',
+        eyebrow: 'CERITA KAMI',
+        title: 'Tak pernah tahu\nke mana cerita bermula.',
+        body: 'Semua berawal dari sebuah perkenalan sederhana. Rama yang awalnya dikenal sebagai teman dari kakak Nur, perlahan menjadi seseorang yang semakin dekat. Dari obrolan demi obrolan, kami menemukan banyak hal yang terasa sejalan. Tanpa banyak rencana, ternyata kami saling menemukan kecocokan. Hingga akhirnya, kami sepakat untuk membawa hubungan ini ke langkah yang lebih serius. Sebuah perkenalan sederhana yang kini menjadi awal dari perjalanan baru kami.',
+        year: 'DARI. 2026',
+      },
+      {
+        id: 'gallery-01',
+        type: 'gallery',
+        variant: 'masonry',
+        eyebrow: 'FRAGMEN KEBERSAMAAN',
+        title: 'Potongan cerita,\nyang berarti.',
+        images: [
+          {
+            id: 'photo-01',
+            src: 'https://images.unsplash.com/photo-1524649094300-bf0e3d5f42ff?auto=format&fit=crop&w=1200&q=85',
+            alt: 'Wedding couple holding hands',
+            caption: 'Sebuah awal yang sederhana',
+          },
+          {
+            id: 'photo-02',
+            src: 'https://images.unsplash.com/photo-1735932175138-86a8c3119c93?auto=format&fit=crop&w=1200&q=85',
+            alt: 'Couple holding hands with engagement ring',
+            caption: 'Semakin mengenal, semakin yakin',
+          },
+          {
+            id: 'photo-03',
+            src: 'https://images.pexels.com/photos/23715705/pexels-photo-23715705/free-photo-of-groom-and-the-bride-looking-through-a-window.jpeg?auto=compress&cs=tinysrgb&w=1200',
+            alt: 'Muslim bride wearing hijab and groom photographed from behind',
+            caption: 'Melangkah menuju cerita yang sama',
+          },
+          {
+            id: 'photo-04',
+            src: 'https://images.unsplash.com/photo-1727374703446-432a38041d0e?auto=format&fit=crop&w=1200&q=85',
+            alt: 'Close up wedding ring',
+            caption: 'Menuju babak yang baru',
+          },
+        ],
+      },
+      {
+        id: 'event-01',
+        type: 'event',
+        variant: 'minimal',
+        eyebrow: 'HARI BAHAGIA KAMI',
+        title: 'Hari istimewa,\nlangkah bermakna.',
+        events: [
+           {
+            id: 'akad',
+            label: 'Akad',
+            date: 'Sabtu, 15 Mei 2027',
+            startTime: '08:00',
+            endTime: '10:00',
+            venue: 'Nama Tempat',
+            address: 'Cimanggu, Kabupaten Bandung Barat',
+          },
+          {
+            id: 'resepsi',
+            label: 'Resepsi',
+            date: 'Sabtu, 15 Mei 2027',
+            startTime: '10:00',
+            endTime: '14:00',
+            venue: 'Nama Tempat',
+            address: 'Cimanggu, Kabupaten Bandung Barat',
+          },
+        ],
+      },
+      {
+        id: 'rsvp-01',
+        type: 'rsvp',
+        variant: 'classic',
+        eyebrow: 'KONFIRMASI KEHADIRAN',
+        title: 'Bersama merayakan\nhari bahagia kami.',
+        description: 'Kehadiran dan doa restu dari keluarga serta sahabat akan menjadi kebahagiaan tersendiri bagi kami. Mohon konfirmasikan kehadiran Anda.',
+        maxGuests: 3,
+      },
+      {
+        id: 'closing-01',
+        type: 'closing',
+        variant: 'statement',
+        message: 'Satu perkenalan,\nmenuju satu tujuan.',
+        signature: 'Dengan penuh cinta, Nur & Rama',
+      },
+    ],
+  },
+] satisfies Invitation[]

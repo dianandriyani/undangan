@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap');
+
+/*
+ * Tailwind CSS v4 — theme + utilities only.
+ * Preflight is intentionally not imported: the design relies on the
+ * browser's default element styles (heading/paragraph margins, etc.).
+ */
+@layer theme, base, components, utilities;
+
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+/*
+ * Avant-garde theme tokens. ThemeProvider adds the `.theme-avant-garde`
+ * class (see app/registries/theme-registry.ts); every --ag-* variable
+ * used by the components is defined here.
+ */
+@layer base {
+  .theme-avant-garde,
+  .theme-sage-botanical {
+    /* ----------------------------------
+     * Color palette
+     * ---------------------------------- */
+    color-scheme: light;
+
+    --ag-bg: #f5f2eb;
+    --ag-surface: #eae6dd;
+    --ag-ink: #242321;
+    --ag-muted: #858078;
+    --ag-accent: #a88e70;
+    --ag-line: rgba(36, 35, 33, 0.18);
+
+    /* ----------------------------------
+     * Typography
+     * ---------------------------------- */
+    --ag-font-display: 'Playfair Display', Georgia, serif;
+    --ag-font-sans: 'DM Sans', sans-serif;
+    --ag-font-mono: 'DM Mono', monospace;
+
+    --ag-text-xs: 0.6875rem;
+    --ag-text-sm: 0.8125rem;
+    --ag-text-base: 1rem;
+    --ag-text-lg: 1.25rem;
+
+    --ag-display-sm: clamp(3.5rem, 8vw, 7rem);
+    --ag-display-md: clamp(4.5rem, 10vw, 9rem);
+    --ag-display-xl: clamp(5rem, 13.5vw, 12rem);
+
+    --ag-leading-tight: 0.88;
+    --ag-leading-display: 0.95;
+    --ag-leading-body: 1.85;
+
+    --ag-tracking-tight: -0.065em;
+    --ag-tracking-wide: 0.12em;
+
+    /* ----------------------------------
+     * Layout
+     * ---------------------------------- */
+    --ag-container: 1800px;
+    --ag-content-width: 1120px;
+    --ag-section-padding: clamp(24px, 7.2vw, 116px);
+
+    --ag-space-1: 0.5rem;
+    --ag-space-2: 1rem;
+    --ag-space-3: 1.5rem;
+    --ag-space-4: 2rem;
+    --ag-space-5: 3rem;
+    --ag-space-6: 5rem;
+    --ag-space-7: 8rem;
+
+    /* ----------------------------------
+     * Borders
+     * ---------------------------------- */
+    --ag-border: 1px solid var(--ag-line);
+    --ag-line-subtle: rgba(36, 35, 33, 0.09);
+    --ag-border-subtle: 1px solid var(--ag-line-subtle);
+
+    /* ----------------------------------
+     * Motion
+     * ---------------------------------- */
+    --ag-duration-fast: 180ms;
+    --ag-duration-normal: 450ms;
+    --ag-duration-slow: 800ms;
+    --ag-duration-reveal: 1100ms;
+
+    --ag-ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+    --ag-ease-dramatic: cubic-bezier(0.76, 0, 0.24, 1);
+    --ag-ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* ----------------------------------
+     * Theme defaults
+     * ---------------------------------- */
+    background-color: var(--ag-bg);
+    color: var(--ag-ink);
+    font-family: var(--ag-font-sans);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* ----------------------------------
+   * Sage Botanical — base palette + per-section tones.
+   * Section → tone mapping lives in app/registries/theme-registry.ts.
+   * ---------------------------------- */
+  .theme-sage-botanical {
+    --ag-bg: #f3f1e7;
+    --ag-surface: #e6e6d8;
+    --ag-ink: #26322a;
+    --ag-muted: #6c7768;
+    --ag-accent: #6f8460;
+    --ag-line: rgba(38, 50, 42, 0.16);
+    --ag-line-subtle: rgba(38, 50, 42, 0.08);
+    --ag-border: 1px solid var(--ag-line);
+    --ag-border-subtle: 1px solid var(--ag-line-subtle);
+  }
+
+  .theme-sage-botanical .tone-ivory {
+    --theme-bg: #f3f1e7;
+    --theme-surface: #e6e6d8;
+    --theme-ink: #26322a;
+    --theme-muted: #6c7768;
+    --theme-accent: #6f8460;
+    --theme-line: rgba(38, 50, 42, 0.16);
+    --ag-border-subtle: 1px solid rgba(38, 50, 42, 0.08);
+  }
+
+  .theme-sage-botanical .tone-sage-mist {
+    --theme-bg: #e1e7d8;
+    --theme-surface: #d2dbc7;
+    --theme-ink: #223026;
+    --theme-muted: #5a6a5a;
+    --theme-accent: #56704f;
+    --theme-line: rgba(34, 48, 38, 0.18);
+    --ag-border-subtle: 1px solid rgba(34, 48, 38, 0.09);
+  }
+
+  .theme-sage-botanical .tone-sage {
+    --theme-bg: #b7c4a7;
+    --theme-surface: #a8b798;
+    --theme-ink: #1d2a20;
+    --theme-muted: #3d4c3f;
+    --theme-accent: #7a5c3a;
+    --theme-line: rgba(29, 42, 32, 0.22);
+    --ag-border-subtle: 1px solid rgba(29, 42, 32, 0.11);
+  }
+
+  .theme-sage-botanical .tone-forest {
+    color-scheme: dark;
+    --theme-bg: #2e3b31;
+    --theme-surface: #384839;
+    --theme-ink: #eef0e3;
+    --theme-muted: #aab69f;
+    --theme-accent: #c9d6a3;
+    --theme-line: rgba(238, 240, 227, 0.18);
+    --ag-border-subtle: 1px solid rgba(238, 240, 227, 0.09);
+  }
+
+  @media (max-width: 700px) {
+    .theme-avant-garde,
+    .theme-sage-botanical {
+      --ag-section-padding: 24px;
+      --ag-space-6: 3.5rem;
+      --ag-space-7: 5rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .theme-avant-garde,
+    .theme-sage-botanical {
+      --ag-duration-fast: 0ms;
+      --ag-duration-normal: 0ms;
+      --ag-duration-slow: 0ms;
+      --ag-duration-reveal: 0ms;
+    }
+  }
+}
+
+/* Matches the original `@media (max-width: 700px)` breakpoint exactly. */
+@custom-variant mobile (@media (max-width: 700px));
+
+/*
+ * Design tokens exposed as Tailwind utilities.
+ * Values point at the active theme's CSS variables, so a theme can
+ * restyle every component without touching templates.
+ */
+@theme inline {
+  --color-canvas: var(--theme-bg);
+  --color-surface: var(--theme-surface);
+  --color-ink: var(--theme-ink);
+  --color-muted: var(--theme-muted);
+  --color-accent: var(--theme-accent);
+  --color-line: var(--theme-line);
+
+  --font-sans: var(--ag-font-sans);
+  --font-display: var(--ag-font-display);
+  --font-mono: var(--ag-font-mono);
+
+  --animate-equalizer: music-equalizer 700ms ease-in-out infinite alternate;
+
+  @keyframes music-equalizer {
+    from {
+      transform: scaleY(0.5);
+    }
+
+    to {
+      transform: scaleY(2.2);
+    }
+  }
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+    font-family: 'DM Sans', sans-serif;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background: #f5f2eb;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible {
+    outline: 1px solid currentColor;
+    outline-offset: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
