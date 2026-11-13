@@ -37,6 +37,7 @@ export const themeRegistry = {
     sectionTones: {
       opening: 'tone-sage-mist',
       cover: 'tone-ivory',
+      verse: 'tone-sage-mist',
       countdown: 'tone-forest',
       story: 'tone-sage-mist',
       gallery: 'tone-ivory',

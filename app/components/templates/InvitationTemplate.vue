@@ -17,6 +17,21 @@ const visibleBlocks = computed(() => {
   })
 })
 
+/**
+ * The countdown sits right after the opening run of the page:
+ * the cover, plus a verse block if one immediately follows it.
+ */
+const countdownAnchorId = computed(() => {
+  const blocks = visibleBlocks.value
+  const coverIndex = blocks.findIndex((block) => block.type === 'cover')
+
+  if (coverIndex === -1) return null
+
+  const next = blocks[coverIndex + 1]
+
+  return next?.type === 'verse' ? next.id : blocks[coverIndex]!.id
+})
+
 const musicUrl = computed(() => {
   const { showMusicToggle, musicUrl } = props.invitation.settings
 
@@ -45,7 +60,7 @@ provide(
 
       <TemplatesThemeSection
         v-if="
-          block.type === 'cover' &&
+          block.id === countdownAnchorId &&
           invitation.settings.showCountdown
         "
         section="countdown"

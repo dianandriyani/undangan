@@ -39,6 +39,17 @@ export interface CoverBlock extends BaseInvitationBlock {
   supportingText: string
 }
 
+export interface VerseBlock extends BaseInvitationBlock {
+  type: 'verse'
+  variant: 'centered'
+  eyebrow: string
+  /** Original text (rendered right-to-left). */
+  arabic: string
+  translation: string
+  /** Citation, e.g. "QS. AR-RUM : 21". */
+  source: string
+}
+
 export interface StoryBlock extends BaseInvitationBlock {
   type: 'story'
   variant: 'editorial' | 'timeline'
@@ -89,6 +100,7 @@ export interface ClosingBlock extends BaseInvitationBlock {
 
 export type InvitationBlock =
   | CoverBlock
+  | VerseBlock
   | StoryBlock
   | GalleryBlock
   | EventBlock

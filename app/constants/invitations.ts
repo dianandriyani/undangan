@@ -28,6 +28,15 @@ export const INVITATIONS = [
         supportingText: 'Dengan penuh rasa syukur, kami ingin berbagi kebahagiaan atas langkah baru dalam perjalanan kami.',
       },
       {
+        id: 'verse-01',
+        type: 'verse',
+        variant: 'centered',
+        eyebrow: 'SEBAGAIMANA FIRMAN-NYA',
+        arabic: 'وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ',
+        translation: 'Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia menciptakan pasangan-pasangan untukmu dari (jenis) dirimu sendiri agar kamu merasa tenteram kepadanya. Dia menjadikan di antaramu rasa cinta dan kasih sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.',
+        source: 'QS. AR-RUM : 21',
+      },
+      {
         id: 'story-01',
         type: 'story',
         variant: 'editorial',

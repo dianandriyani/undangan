@@ -81,7 +81,7 @@ const location = computed(() => {
       </motion.div>
 
       <motion.h1
-        class="mx-0 mt-[26px] mb-[34px] max-w-[1100px] font-display text-[length:clamp(4rem,10.5vw,9.5rem)] leading-[0.92] font-medium tracking-(--ag-tracking-tight) whitespace-pre-line mobile:mt-[22px] mobile:mb-[28px] mobile:text-[length:clamp(3.5rem,15vw,6rem)]"
+        class="mx-0 mt-[26px] mb-[34px] max-w-[1100px] font-display text-[length:clamp(3rem,6.5vw,6.5rem)] leading-[0.92] font-medium tracking-(--ag-tracking-tight) whitespace-pre-line mobile:mt-[22px] mobile:mb-[28px] mobile:text-[length:clamp(3.5rem,15vw,6rem)]"
         :initial="{ opacity: 0, y: 36 }"
         :animate="{ opacity: 1, y: 0 }"
         :transition="{
