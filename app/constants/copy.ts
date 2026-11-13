@@ -99,4 +99,52 @@ export const COPY = {
     playAriaLabel: 'Play background music',
     pauseAriaLabel: 'Pause background music',
   },
+
+  dashboard: {
+    pageTitle: 'Kirim Undangan',
+    eyebrow: 'DASHBOARD UNDANGAN',
+    heading: 'Kirim undangan,\nsatu per satu.',
+    description: 'Isi nama tamu dan nomor WhatsApp-nya. Link undangan personal akan dibuat otomatis.',
+    nameLabel: 'NAMA TAMU',
+    namePlaceholder: 'Contoh: Budi Santoso',
+    phoneLabel: 'NOMOR WHATSAPP',
+    phonePlaceholder: 'Contoh: 0812 3456 7890',
+    phoneHint: 'Boleh diawali 0, 62, atau +62.',
+    phoneInvalid: 'Nomor WhatsApp belum valid.',
+    linkLabel: 'LINK UNDANGAN',
+    linkPlaceholder: 'Link muncul setelah nama diisi',
+    messageLabel: 'PRATINJAU PESAN',
+    send: 'KIRIM KE WHATSAPP',
+    sendIcon: '↗',
+
+    /**
+     * WhatsApp message template. `*text*` renders as bold in WhatsApp.
+     */
+    message: ({ guestName, link, coupleNames }: {
+      guestName: string
+      link: string
+      coupleNames: string
+    }) => [
+      'Assalamu\'alaikum Warahmatullahi Wabarakatuh',
+      '',
+      'Kepada Yth.',
+      `Bapak/Ibu/Saudara/i *${guestName}*`,
+      '',
+      'Tanpa mengurangi rasa hormat, dengan penuh sukacita kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk hadir dan turut merayakan hari bahagia kami.',
+      '',
+      'Detail acara selengkapnya dapat dilihat melalui tautan undangan berikut:',
+      link,
+      '',
+      'Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir serta memberikan doa restu.',
+      '',
+      '*Mohon maaf, tautan undangan ini kami tujukan secara khusus untuk Bapak/Ibu/Saudara/i. Dengan segala hormat, kami mohon kesediaannya untuk tidak membagikan tautan ini kepada pihak lain.*',
+      '',
+      'Atas perhatian dan doa restunya, kami ucapkan terima kasih.',
+      '',
+      'Wassalamu\'alaikum Warahmatullahi Wabarakatuh',
+      '',
+      'Kami yang berbahagia,',
+      `*${coupleNames}*`,
+    ].join('\n'),
+  },
 } as const
