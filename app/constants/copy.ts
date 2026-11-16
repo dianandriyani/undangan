@@ -92,14 +92,14 @@ export const COPY = {
   },
 
   music: {
-    play: 'PLAY MUSIC',
-    pause: 'PAUSE MUSIC',
-    loading: 'LOADING',
-    unavailable: 'UNAVAILABLE',
-    playAriaLabel: 'Play background music',
-    pauseAriaLabel: 'Pause background music',
+    play: 'PUTAR MUSIK',
+    pause: 'JEDA MUSIK',
+    loading: 'MEMUAT...',
+    unavailable: 'MUSIK TIDAK TERSEDIA',
+    playAriaLabel: 'Putar musik latar',
+    pauseAriaLabel: 'Jeda musik latar',
   },
-
+  
   dashboard: {
     pageTitle: 'Kirim Undangan',
     eyebrow: 'DASHBOARD UNDANGAN',
