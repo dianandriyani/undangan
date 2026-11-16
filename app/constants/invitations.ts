@@ -15,7 +15,8 @@ export const INVITATIONS = [
     weddingDate: '2027-05-15T00:00:00+07:00',
     settings: {
       showCountdown: true,
-      showMusicToggle: false,
+      showMusicToggle: true,
+      musicUrl: '/audio/Bermuara.mp3',
       allowRsvp: false,
     },
     blocks: [

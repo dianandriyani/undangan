@@ -5,64 +5,44 @@ const props = defineProps<{
   src: string
 }>()
 
-const audio = ref<HTMLAudioElement | null>(null)
-const isPlaying = ref(false)
-const isLoading = ref(false)
-const hasError = ref(false)
+const { isPlaying, isLoading, hasError, play, pause, toggle } = useBackgroundMusic()
 
-async function togglePlayback() {
-  if (!audio.value || isLoading.value) return
+const interactionEvents = ['click', 'touchend', 'keydown'] as const
 
-  if (isPlaying.value) {
-    audio.value.pause()
-    return
-  }
+function startOnFirstInteraction() {
+  removeInteractionListeners()
+  void play(props.src)
+}
 
-  try {
-    isLoading.value = true
-    hasError.value = false
-
-    await audio.value.play()
-  } catch {
-    hasError.value = true
-    isPlaying.value = false
-  } finally {
-    isLoading.value = false
+function removeInteractionListeners() {
+  for (const event of interactionEvents) {
+    document.removeEventListener(event, startOnFirstInteraction)
   }
 }
 
-function handlePlay() {
-  isPlaying.value = true
-  hasError.value = false
-}
+onMounted(async () => {
+  // Already started by the "Open invitation" click, or autoplay allowed.
+  if (isPlaying.value || await play(props.src)) return
 
-function handlePause() {
-  isPlaying.value = false
-}
-
-function handleError() {
-  hasError.value = true
-  isPlaying.value = false
-  isLoading.value = false
-}
+  // Autoplay blocked: start on the visitor's first tap/click/key press.
+  for (const event of interactionEvents) {
+    document.addEventListener(event, startOnFirstInteraction, { once: true })
+  }
+})
 
 onBeforeUnmount(() => {
-  audio.value?.pause()
+  removeInteractionListeners()
+  pause()
 })
+
+function togglePlayback() {
+  removeInteractionListeners()
+  toggle(props.src)
+}
 </script>
 
 <template>
   <div class="fixed right-[32px] bottom-[32px] z-50 mobile:right-[20px] mobile:bottom-[20px]">
-    <audio
-      ref="audio"
-      :src="props.src"
-      loop
-      preload="none"
-      @play="handlePlay"
-      @pause="handlePause"
-      @error="handleError"
-    />
-
     <button
       type="button"
       class="flex min-h-[52px] cursor-pointer items-center gap-[12px] rounded-[999px] border border-line bg-canvas px-[20px] py-0 text-ink [transition:background-color_var(--ag-duration-fast)_var(--ag-ease-standard),color_var(--ag-duration-fast)_var(--ag-ease-standard),transform_var(--ag-duration-fast)_var(--ag-ease-standard)] hover:enabled:bg-ink hover:enabled:text-canvas hover:enabled:[transform:translateY(-3px)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent disabled:cursor-wait disabled:opacity-65 mobile:min-h-[46px] mobile:gap-[10px] mobile:px-[16px] motion-reduce:[transition:none]"

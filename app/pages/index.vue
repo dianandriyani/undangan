@@ -50,7 +50,16 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 })
 
+const { play: playMusic } = useBackgroundMusic()
+const { showMusicToggle, musicUrl } = invitation.settings
+
 async function openInvitation() {
+  // Start music inside the click handler itself (before any await),
+  // so browsers — Safari especially — accept it as user-initiated.
+  if (showMusicToggle && musicUrl) {
+    void playMusic(musicUrl)
+  }
+
   isOpening.value = true
 
   await nextTick()
